@@ -53,9 +53,9 @@ public abstract class Player {
      * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
      * with logic to play your game.
      */
-    public Card playCard(){
-        Card card = new Card();
-        return 
+    public PlayingCard playCard(){
+        PlayingCard card = new PlayingCard();
+        return card;
     }
     
     public void showScore(){
