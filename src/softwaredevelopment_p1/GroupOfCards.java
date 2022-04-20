@@ -66,16 +66,24 @@ public class GroupOfCards {
     }
     
     /**
-     * returns the collection of cards
+     * Display the collection of cards
      */
     public void showDeck(){
-        
+        for(Card e: cards){
+            //Uses toString method in Card
+            System.out.println(e);
+        }
     }
     /**
      * Adds this cards collection to the winning player
      */
     public void addToWinner(Player p1){
+        //The players hand is private so you cant access it to add cards to it.
+        //We need an addToHand method in the player class.
+        //p1.addToHand(cards);
         
+        //A card cant be in two places in the same time so removing from this group after adding to player hand
+        //cards.clear();
     }
 
 }//end class
