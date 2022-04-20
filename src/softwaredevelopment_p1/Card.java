@@ -25,5 +25,7 @@ public abstract class Card {
      */
     @Override
     public abstract String toString();
-
+    
+    public abstract boolean compareCards(Card card);
+    
 }

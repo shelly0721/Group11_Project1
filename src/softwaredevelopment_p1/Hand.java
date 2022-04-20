@@ -12,7 +12,7 @@ public class Hand extends GroupOfCards {
     /* This method is called after playsers dueled cards to show which player dueled 
        what card.  */  
     public void showDeck() {
-        System.out.println();
+        System.out.println();//placeholder
     }
     
     /* This method is called after comparing the rank of cards dueled to deck from players' hand. 
@@ -20,10 +20,9 @@ public class Hand extends GroupOfCards {
     /* So this method should know to whom the cards go. The cards are added to winners ArrayList.
        Also, it returns the number, "how many cards are the player having."
     */
-     public int addToWinner (String playerName) {   
+     public void addToWinner (Player player) {   
          
          
-        return 3;
     }
     
    

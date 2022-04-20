@@ -35,6 +35,9 @@ public class GroupOfCards {
         this.size = size;
     }
 
+     public boolean compareCards(Card card){
+       return true; //holding statement 
+    };
     /**
      * A method that will get the group of cards as an ArrayList
      *
@@ -60,6 +63,19 @@ public class GroupOfCards {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+    
+    /**
+     * returns the collection of cards
+     */
+    public void showDeck(){
+        
+    }
+    /**
+     * Adds this cards collection to the winning player
+     */
+    public void addToWinner(Player p1){
+        
     }
 
 }//end class

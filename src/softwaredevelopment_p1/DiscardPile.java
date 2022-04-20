@@ -7,15 +7,10 @@ public class DiscardPile extends GroupOfCards {
     public DiscardPile(int size) {
         super(size);
     }
+           
+     public void addToWinner(Player player) {
     
-    
-    public void showWar() {
-        System.out.println("War!!!!");
-    }
-    
-     public int addToWinner () {
-    
-        return 3;
+
     }
     
     public void showDeck() {

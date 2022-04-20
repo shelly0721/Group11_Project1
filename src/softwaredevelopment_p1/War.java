@@ -11,13 +11,11 @@ public class War extends GroupOfCards {
     }
     
     
-    public int addToWinner () {
-    
-        return 3;
+    public void addToWinner(Player player) {
+
     }
     
     public void showDeck() {
-    
     
     }
     
@@ -26,4 +24,7 @@ public class War extends GroupOfCards {
         Collections.shuffle(getCards());                   
     }
   
+    public void showWar() {
+        System.out.println("War!!!!");
+    }
 }

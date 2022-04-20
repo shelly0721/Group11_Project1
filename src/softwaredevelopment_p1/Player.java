@@ -19,6 +19,10 @@ package softwaredevelopment_p1;
 public abstract class Player {
 
     private String name; //the unique name for this player
+    private int winStreak;
+    private int score;
+    private Hand hand;
+    private DiscardPile discard;
 
     /**
      * A constructor that allows you to set the player's unique ID
@@ -49,6 +53,13 @@ public abstract class Player {
      * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
      * with logic to play your game.
      */
-    public abstract void play();
+    public Card playCard(){
+        Card card = new Card();
+        return 
+    }
+    
+    public void showScore(){
+        
+    }
 
 }
