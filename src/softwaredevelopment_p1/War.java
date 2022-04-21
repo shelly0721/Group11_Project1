@@ -17,9 +17,7 @@ public class War extends GroupOfCards {
         player.getDiscardPile().addAll(this.getCards());
    }
           
-        
-    
-    
+            
    public void showDeck() {
         /* this method is called both when cards are put into deck and when 
            cards are taken from the deck  */
