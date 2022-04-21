@@ -31,6 +31,11 @@ public class Player {
      */
     public Player(String name) {
         this.name = name;
+        this.hand = new Hand(0);
+        this.discard = new DiscardPile(0);
+        this.score = 0;
+        this.winStreak = 0;
+        
     }
 
     /**
@@ -56,6 +61,9 @@ public class Player {
 //    public PlayingCard playCard(){
 //        return this.hand.playTopCard();
 //    }
+    public void setScore(){
+        this.score = this.discard.getSize();
+    }
     
     /**
      * gives the score value for the player
@@ -93,5 +101,12 @@ public class Player {
     public int getStreak(){
         return this.winStreak;
     }
+    
+    public void addToHand(PlayingCard card){
+        this.hand.add(card);
+    }
 
+    public Hand getHand(){
+        return this.hand;
+    }
 }

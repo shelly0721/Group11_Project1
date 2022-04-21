@@ -75,8 +75,21 @@ public class Game {
      * Evenly deals cards to the number of players in the game
      */
     public void dealCards(){
-
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = cf.getDeck();
+        deck.shuffle();
+        int cardsDealt = deck.getSize() / this.players.size();
+        GroupOfCards tempHand = new GroupOfCards(cardsDealt);
+        System.out.println(deck.getCards().get(0));
         
+        for(Player player: this.players){
+            while(tempHand.getCards().size() < cardsDealt){
+                tempHand.add(deck.getCards().get(0));
+                deck.getCards().remove(0);
+            }
+            player.getHand().addAll(tempHand.getCards());
+            tempHand.getCards().clear();
+        } 
     }
     
     //displays the winner and the current stats of everyone else in the game
@@ -107,6 +120,12 @@ public class Game {
         //the max card owner gets all the cards added to their discrad pile
         //and the losers have the cards removed
     }
+    
+    public void showScores(){
+        for(Player player: this.getPlayers()){
+            player.showScore();
+        }
+    }
 
 //    /**
 //     * Play the game. This might be one method or many method calls depending on your game.
@@ -119,3 +138,4 @@ public class Game {
 //    public abstract void declareWinner();
 
 }//end class
+
