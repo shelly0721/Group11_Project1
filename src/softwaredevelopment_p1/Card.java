@@ -15,7 +15,7 @@ package softwaredevelopment_p1;
  * @author dancye
  * 
  */
-public abstract class Card {
+public abstract class Card{
     //default modifier for child classes
 
     /**
@@ -25,7 +25,5 @@ public abstract class Card {
      */
     @Override
     public abstract String toString();
-    
-    public abstract boolean compareCards(Card card);
     
 }
