@@ -12,18 +12,13 @@ public class War extends GroupOfCards {
     }
     
     
-   public int addToWinner (String player) { 
+   public void addToWinner (Player player) { 
        
-        for (int i = GroupOfCards.DiscardPile.getCards().size(); i > 0; i-- ) {
-             // temp contains the cards taken from deck.
-             // move them to winner hands.
-             getCards().add(GroupOfCards.DiscardPile.getCards());
-            
-// in this way, temp should be declared in GroupOfCard         
-         }                                              // so far, it declared in "DiscardPile" class.
-         return getCards().size();      
+        player.getDiscardPile().addAll(this.getCards());
+   }
+          
         
-    }
+    
     
    public void showDeck() {
         /* this method is called both when cards are put into deck and when 
@@ -35,6 +30,15 @@ public class War extends GroupOfCards {
     }
     
     
+    public void shuffleCards() {       
+        Collections.shuffle(getCards());                   
+    }
+  
+    public void showWar() {
+        System.out.println("War!!!!");
+    }
+}
+
     public void shuffleCards() {       
         Collections.shuffle(getCards());                   
     }
