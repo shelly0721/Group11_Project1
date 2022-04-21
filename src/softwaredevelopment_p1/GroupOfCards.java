@@ -32,6 +32,7 @@ public class GroupOfCards {
     private int size;//the size of the grouping
 
     public GroupOfCards(int size) {
+        this.cards = new ArrayList<Card>();
         this.size = size;
     }
 
@@ -51,6 +52,13 @@ public class GroupOfCards {
         Collections.shuffle(cards);
     }
 
+    public void add(Card c){
+        cards.add(c);
+    }
+    public void addAll(ArrayList<Card> manycards){
+        cards.addAll(manycards);
+    } 
+    
     /**
      * @return the size of the group of cards
      */
