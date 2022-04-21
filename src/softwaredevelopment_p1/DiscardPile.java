@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DiscardPile extends GroupOfCards {
-
-    private ArrayList<Card> temp = new ArrayList<>();
    
     public DiscardPile(int size) {
         super(size);
     }
            
-    public void addToWinner (Player player) {   
-        for (int i = getCards().size()-1; i>0; i--) {
-            // move all cards in deck to temp, then remove it          
-            temp.add(getCards().get(0));
-            getCards().remove(0);  
-           
-        }
-    }
+//    public void addToWinner (Player player) {   
+//        for (int i = getCards().size()-1; i>0; i--) {
+//            // move all cards in deck to temp, then remove it          
+//            temp.add(getCards().get(0));
+//            getCards().remove(0);  
+//           
+//        }
+//    }
     
     public void showDeck() {
         /* this method is called both when cards are put into deck and when 
@@ -34,6 +32,12 @@ public class DiscardPile extends GroupOfCards {
         Collections.shuffle(getCards());
     
     }   
+    
+    public ArrayList<Card> getCard() {
+        return getCards();
+    }
+}
+
     
     public ArrayList<Card> getTemp() {
             return temp;
