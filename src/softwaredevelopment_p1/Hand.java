@@ -24,16 +24,16 @@ public class Hand extends GroupOfCards {
     /* The cards is stored in "ArrayList<Card> temp," so take all of them. 
     /* Also, it returns the number, "how many cards are the player having." */
      
-     public int addToWinner (String player) { 
-                                   
-         for (int i = getTemp().size(); i > 0; i-- ) {
-             // temp contains the cards taken from deck.
-             // move them to winner hands.
-             getCards().add(getTemp().get(0));
-             getTemp().remove(0);                       // in this way, temp should be declared in GroupOfCard         
-         }                                              // so far, it declared in "DiscardPile" class.
-         return getCards().size();     
-    }
+//     public int addToWinner (String player) { 
+//                                   
+//         for (int i = getTemp().size(); i > 0; i-- ) {
+//             // temp contains the cards taken from deck.
+//             // move them to winner hands.
+//             getCards().add(getTemp().get(0));
+//             getTemp().remove(0);                       // in this way, temp should be declared in GroupOfCard         
+//         }                                              // so far, it declared in "DiscardPile" class.
+//         return getCards().size();     
+//    }
     
      /* This method is for "Playing Card," for player putting a card to deck. 
         It removes the "card" in each players' ArrayList and returns that. 
