@@ -41,13 +41,12 @@ public class Hand extends GroupOfCards {
      public PlayingCard playTopCard() {
          PlayingCard temp = (PlayingCard) getCards().get(0);       
          getCards().remove(0);
-         return temp;
-         
+         return temp;         
      }
    
     
     public void shuffleCards() {
-         Collections.shuffle(getCards());
-    
+         Collections.shuffle(getCards());  
     }
 }
+
