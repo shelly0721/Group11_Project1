@@ -25,20 +25,16 @@ public class DiscardPile extends GroupOfCards {
             //Uses toString method in Card
             System.out.println(e);
         }
-    }
-    
+    }  
     
     public void shuffleCards() {
         Collections.shuffle(getCards());
-    
     }   
     
     public ArrayList<Card> getCard() {
         return getCards();
     }
-}
-
-    
+   
     public ArrayList<Card> getTemp() {
             return temp;
     }
