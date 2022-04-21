@@ -12,13 +12,9 @@ public class War extends GroupOfCards {
     }
     
     
-   public void addToWinner (Player player) { 
-       
+   public void addToWinner (Player player) {        
         player.getDiscardPile().addAll(this.getCards());
-   }
-          
-        
-    
+   }   
     
    public void showDeck() {
         /* this method is called both when cards are put into deck and when 
@@ -28,27 +24,7 @@ public class War extends GroupOfCards {
             System.out.println(e);
         } 
     }
-    
-    
-    public void shuffleCards() {       
-        Collections.shuffle(getCards());                   
-    }
-  
-    public void showWar() {
-        System.out.println("War!!!!");
-    }
-}
-
-    public void shuffleCards() {       
-        Collections.shuffle(getCards());                   
-    }
-  
-    public void showWar() {
-        System.out.println("War!!!!");
-    }
-}
-
-    
+      
     public void shuffleCards() {       
         Collections.shuffle(getCards());                   
     }
