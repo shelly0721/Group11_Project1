@@ -43,3 +43,13 @@ public class War extends GroupOfCards {
         System.out.println("War!!!!");
     }
 }
+
+    
+    public void shuffleCards() {       
+        Collections.shuffle(getCards());                   
+    }
+  
+    public void showWar() {
+        System.out.println("War!!!!");
+    }
+}
