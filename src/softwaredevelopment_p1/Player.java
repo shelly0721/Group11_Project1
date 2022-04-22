@@ -30,7 +30,7 @@ public class Player {
      * @param name the unique ID to assign to this player.
      */
     public Player(String name) {
-        this.name = name;
+        this.setName(name);
         this.hand = new Hand(0);
         this.discard = new DiscardPile(0);
         this.score = 0;
@@ -77,7 +77,7 @@ public class Player {
      * @return 
      */
     public void showScore(){
-        System.out.printf("%s's score is: %d", this.getName(), this.getScore());
+        System.out.printf("%s's score is: %d\n", this.getName(), this.getScore());
     }
     
     /**
@@ -108,5 +108,17 @@ public class Player {
 
     public Hand getHand(){
         return this.hand;
+    }
+    
+    public DiscardPile getDiscardPile(){
+        return this.discard;
+    }
+    
+    public PlayingCard playCard(){
+        return this.hand.playTopCard();
+    }
+    
+    public void announceWin(){
+        System.out.printf("%s won that round!\n", this.getName());
     }
 }

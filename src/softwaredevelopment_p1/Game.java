@@ -51,6 +51,10 @@ public class Game {
         this.players = players;
     }
     
+    /**
+     * Declares the provided player as the winner of the game;
+     * @param player 
+     */
     public void declareWinner(Player player){
         player.addStreak();
         for(Player p: this.players){
@@ -61,8 +65,7 @@ public class Game {
     }
     
     /**
-     * Goes through the series of prompts required for a new player to be 
-     * created
+     * Adds the provided player to the total players in the game
      * @param player
      */
     public void registerPlayer(Player player){
@@ -80,7 +83,7 @@ public class Game {
         deck.shuffle();
         int cardsDealt = deck.getSize() / this.players.size();
         GroupOfCards tempHand = new GroupOfCards(cardsDealt);
-        System.out.println(deck.getCards().get(0));
+//        System.out.println(deck.getCards().get(0));
         
         for(Player player: this.players){
             while(tempHand.getCards().size() < cardsDealt){
@@ -92,7 +95,11 @@ public class Game {
         } 
     }
     
-    //displays the winner and the current stats of everyone else in the game
+
+    /**
+     * Displays the final winner and the current stats
+     * of everyone else in the game
+     */
     public void displayWinner(){
         int max = 0;
         Player winner=this.players.get(0);
@@ -108,12 +115,31 @@ public class Game {
     }
     
     /**
-     * Displays the name of the player whose turn is next
+     * Has each player play a card into the round and then find the winner
      */
     public void playRound(){
+
         ArrayList<PlayingCard> round = new ArrayList<>();
         for(Player player: this.players){
-//            round.add(player.playCard());
+            round.add(player.playCard());
+        }
+        ArrayList<PlayingCard> max = new ArrayList<>();
+        max.add(round.get(0));
+        for(PlayingCard card: round){
+            if(max.size() != 2){
+                PlayingCard temp = max.get(0);
+                max.clear();
+                max.add(temp.compareTo(card));
+            }
+            break;
+        }
+
+        if(max.size() == 1){
+            this.singleWinner(max.get(0), round);
+
+        }
+        else{
+           this.warDuel(max);
         }
         
         //compare each card in round
@@ -121,11 +147,90 @@ public class Game {
         //and the losers have the cards removed
     }
     
+    /**
+     * Displays the scores for every player in the game
+     */
     public void showScores(){
         for(Player player: this.getPlayers()){
             player.showScore();
         }
     }
+    
+    /**
+     * Announces the winner of the provided round by the provided winning Card
+     * updates scores
+     * @param card
+     * @param round 
+     */
+    public void singleWinner(PlayingCard card, ArrayList<PlayingCard> round){
+        card.getPlayer().getDiscardPile().addAll(round);
+        card.getPlayer().announceWin();
+        this.updateScores();
+    }
+    
+    /**
+     * Goes through the process of a war duel
+     * @param warringCards 
+     */
+    public void warDuel(ArrayList<PlayingCard> warringCards){
+        War roundOfWar = new War(warringCards.size());
+//        roundOfWar.addAll(warringCards);
+        roundOfWar.showWar();
+        ArrayList<Player> warPlayers = new ArrayList<>();
+        for(PlayingCard card: warringCards){
+            warPlayers.add(card.getPlayer());
+            
+        }
+        for(Player player: warPlayers){
+            roundOfWar.getCards().add(player.playCard());
+        }
+        ArrayList<PlayingCard> max = new ArrayList<>();
+        max.add(roundOfWar.getCards().get(0));
+        for(PlayingCard card: roundOfWar.getCards()){
+            if(max.size() != 2){
+                PlayingCard temp = max.get(0);
+                max.clear();
+                max.add(temp.compareTo(card));
+            }
+            break;
+        }
+
+        if(max.size() == 1){
+            this.singleWinner(max.get(0), roundOfWar.getCards());
+
+        }
+        else{
+           this.warDuel(max);
+           this.updateScores();
+        }
+    }
+    
+    /**
+     * Updates the scores for every player in the game
+     */
+    public void updateScores(){
+        for(Player player: this.getPlayers()){
+            player.setScore();
+        }
+    }
+    
+    /**
+     * checks through the score of each player in the game 
+     * and declares a winner if needed
+     * @return 
+     */
+    public Player checkForWinner(){
+        Player winner;
+        for(Player player: this.getPlayers()){
+            if(player.getScore() == 52){
+                this.declareWinner(player);
+                return player;
+            }
+        }  
+    }
+
+    }
+    
 
 //    /**
 //     * Play the game. This might be one method or many method calls depending on your game.

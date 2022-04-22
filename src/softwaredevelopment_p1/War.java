@@ -33,6 +33,6 @@ public class War extends GroupOfCards {
     }
   
     public void showWar() {
-        System.out.println("War!!!!");
+        System.out.println("War!!!!\n");
     }
 }
