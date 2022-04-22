@@ -9,26 +9,44 @@ public class Hand extends GroupOfCards {
         super(size);
     }
     
-    /* This method is called after playsers dueled cards to show which player dueled 
-       what card.  */  
-    public void showDeck() {
-        System.out.println();//placeholder
+   
+     public void showDeck() {
+        /* this method is called both when cards are put into deck and when 
+           cards are taken from the deck  */
+         for(Card e: getCards()) {
+            //Uses toString method in Card
+            System.out.println(e);
+        } 
     }
     
     /* This method is called after comparing the rank of cards dueled to deck from players' hand. 
-       player dueling a card which has biggest number(=winner) gets all of cards from the deck.  */  
-    /* So this method should know to whom the cards go. The cards are added to winners ArrayList.
-       Also, it returns the number, "how many cards are the player having."
-    */
-     public void addToWinner (Player player) {   
-         
-         
-    }
+       The player dueling a card which has biggest number(=winner) gets all of cards from the deck.  */ 
+    /* The cards is stored in "ArrayList<Card> temp," so take all of them. 
+    /* Also, it returns the number, "how many cards are the player having." */
+     
+//     public int addToWinner (String player) { 
+//                                   
+//         for (int i = getTemp().size(); i > 0; i-- ) {
+//             // temp contains the cards taken from deck.
+//             // move them to winner hands.
+//             getCards().add(getTemp().get(0));
+//             getTemp().remove(0);                       // in this way, temp should be declared in GroupOfCard         
+//         }                                              // so far, it declared in "DiscardPile" class.
+//         return getCards().size();     
+//    }
     
+     /* This method is for "Playing Card," for player putting a card to deck. 
+        It removes the "card" in each players' ArrayList and returns that. 
+     */
+     public PlayingCard playTopCard() {
+         PlayingCard temp = (PlayingCard) getCards().get(0);       
+         getCards().remove(0);
+         return temp;         
+     }
    
     
     public void shuffleCards() {
-         Collections.shuffle(getCards());
-    
+         Collections.shuffle(getCards());  
     }
 }
+
