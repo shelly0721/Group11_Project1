@@ -19,12 +19,13 @@ import java.util.ArrayList;
  *  @author Paul Bonenfant Jan 2020
  *
  */
-public abstract class Game {
+public class Game {
 
     private final String name="War" ;//the title of the game
     private ArrayList<Player> players;// the players of the game
+    private War war = new War(0);
 
-    public Game(String name) {
+    public Game() {
 //        this.name = name;
         players = new ArrayList();
     }
@@ -50,35 +51,61 @@ public abstract class Game {
         this.players = players;
     }
     
-    public void declareWinner(){
-        
+    public void declareWinner(Player player){
+        player.addStreak();
+        for(Player p: this.players){
+            if(p != player){
+                p.clearStreak();
+            }
+        }
     }
     
     /**
      * Goes through the series of prompts required for a new player to be 
      * created
+     * @param player
      */
-    public void registerPlayer(){
-        
+    public void registerPlayer(Player player){
+        if(!(this.players.contains(player))){
+            this.players.add(player);
+        }
     }
     
     /**
      * Evenly deals cards to the number of players in the game
      */
     public void dealCards(){
+
         
     }
     
     //displays the winner and the current stats of everyone else in the game
     public void displayWinner(){
-        
+        int max = 0;
+        Player winner=this.players.get(0);
+        for(Player player: this.players){
+            if(player.getScore() > max){
+                max=player.getScore();
+                winner = player;
+            }
+        }
+        System.out.printf("The winner of this game of war is %s \n"
+                , winner.getName());
+        winner.showScore();
     }
     
     /**
      * Displays the name of the player whose turn is next
      */
-    public void showTurn(){
+    public void playRound(){
+        ArrayList<PlayingCard> round = new ArrayList<>();
+        for(Player player: this.players){
+//            round.add(player.playCard());
+        }
         
+        //compare each card in round
+        //the max card owner gets all the cards added to their discrad pile
+        //and the losers have the cards removed
     }
 
 //    /**

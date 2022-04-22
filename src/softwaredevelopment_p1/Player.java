@@ -16,7 +16,7 @@ package softwaredevelopment_p1;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
-public abstract class Player {
+public class Player {
 
     private String name; //the unique name for this player
     private int winStreak;
@@ -52,14 +52,46 @@ public abstract class Player {
     /**
      * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
      * with logic to play your game.
+//     */
+//    public PlayingCard playCard(){
+//        return this.hand.playTopCard();
+//    }
+    
+    /**
+     * gives the score value for the player
+     * @return 
      */
-    public PlayingCard playCard(){
-        PlayingCard card = new PlayingCard();
-        return card;
+    public int getScore(){
+        return this.score;
+    }
+    /**
+     * gives the score value for the player
+     * @return 
+     */
+    public void showScore(){
+        System.out.printf("%s's score is: %d", this.getName(), this.getScore());
     }
     
-    public void showScore(){
-        
+    /**
+     * In the event of a loss the player's streak gets reset
+     */
+    public void clearStreak(){
+        this.winStreak = 0;
+    }
+    
+    /**
+     * In the event of a win the player's streak increases by one
+     */
+    public void addStreak(){
+        this.winStreak++;
+    }
+    
+    /**
+     * return the win streak value for the player
+     * @return 
+     */
+    public int getStreak(){
+        return this.winStreak;
     }
 
 }
