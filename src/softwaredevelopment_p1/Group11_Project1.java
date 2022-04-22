@@ -58,8 +58,10 @@ public class Group11_Project1 {
                         System.out.println("----------------------------------------");
                         System.out.println();
                         war.playRound();
+                        
                         war.checkForLosers();
                         winner = war.checkForWinner();
+                        war.discardToHand();
 
                         break;
                     case 2:
@@ -68,8 +70,10 @@ public class Group11_Project1 {
                         System.out.println("----------------------------------------");
                         System.out.println();
                         war.showScores();
+                        
                         war.checkForLosers();
                         winner = war.checkForWinner();
+                        war.discardToHand();
                         break;
                     case 3:
                         //quit game

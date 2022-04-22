@@ -62,8 +62,12 @@ public class Player {
 //        return this.hand.playTopCard();
 //    }
     public void setScore(){
+        int temp = 0;
+        if(this.getDiscardPile().getCards().size() == 0 && this.score > 0){
+            temp = this.getHand().getCards().size();
+        }
 //        System.out.printf("I'm in the method :> %d\n", this.discard.getSize());
-        this.score = this.discard.getCards().size();
+        this.score = this.discard.getCards().size()+temp;
     }
     
     /**

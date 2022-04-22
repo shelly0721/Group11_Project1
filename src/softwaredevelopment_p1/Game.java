@@ -120,7 +120,10 @@ public class Game {
      * Has each player play a card into the round and then find the winner
      */
     public void playRound(){
-
+        
+        this.checkForLosers();
+        this.checkForWinner();
+        this.discardToHand();
         ArrayList<PlayingCard> round = new ArrayList<>();
         for(Player player: this.players){
             round.add(player.playCard());
@@ -138,7 +141,7 @@ public class Game {
 
         }
         else{
-           this.warDuel(max);
+           this.warDuel(max, round);
         }
         
         //compare each card in round
@@ -172,7 +175,12 @@ public class Game {
      * Goes through the process of a war duel
      * @param warringCards 
      */
-    public void warDuel(ArrayList<PlayingCard> warringCards){
+    public void warDuel(ArrayList<PlayingCard> warringCards, 
+            ArrayList<PlayingCard> roundCards){
+        
+        this.checkForLosers();
+        this.checkForWinner();
+        this.discardToHand();
         War roundOfWar = new War(warringCards.size());
 //        roundOfWar.addAll(warringCards);
         roundOfWar.showWar();
@@ -194,10 +202,11 @@ public class Game {
 
         if(max.size() == 1){
             this.singleWinner(max.get(0), roundOfWar.getCards());
-
+            this.singleWinner(max.get(0), roundCards);
         }
         else{
-           this.warDuel(max);
+           roundCards.addAll(roundOfWar.getCards());
+           this.warDuel(max, roundCards);
            this.updateScores();
         }
     }
@@ -208,6 +217,7 @@ public class Game {
     public void updateScores(){
         for(Player player: this.getPlayers()){
 //            System.out.println(player.getDiscardPile().getCards());
+            System.out.println(player.getHand().getCards().size());
             player.setScore();
         }
     }
@@ -231,7 +241,8 @@ public class Game {
     public void checkForLosers(){
         Player loser;
         for(Player player: this.getPlayers()){
-            if(player.getHand().getCards().size() == 0){
+            if(player.getHand().getCards().size() == 0 &&
+                    player.getDiscardPile().getCards().size() == 0){
                 this.removeLosers(player);
             }
         }  
@@ -241,6 +252,19 @@ public class Game {
         this.players.remove(player);
         this.losers.add(player);
         player.announceLoss();
+    }
+    
+    public void discardToHand(){
+        for(Player player: this.getPlayers()){
+            if(player.getHand().getCards().size() == 0 &&
+                    player.getDiscardPile().getCards().size() > 0){
+                int score = player.getScore();
+                player.getDiscardPile().shuffle();
+                player.getHand().addAll(player.getDiscardPile().getCards());
+                player.getDiscardPile().getCards().clear();
+                this.updateScores();
+            }
+        }
     }
 
     
