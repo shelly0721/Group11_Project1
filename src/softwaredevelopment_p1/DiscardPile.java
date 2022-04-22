@@ -9,7 +9,7 @@ public class DiscardPile extends GroupOfCards {
     }
            
      public void addToWinner(Player player) {
-    
+
 
     }
     

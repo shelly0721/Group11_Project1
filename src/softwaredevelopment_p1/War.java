@@ -12,7 +12,7 @@ public class War extends GroupOfCards {
     
     
     public void addToWinner(Player player) {
-
+        player.getDiscardPile().addAll(this.getCards());
     }
     
     public void showDeck() {
@@ -25,6 +25,6 @@ public class War extends GroupOfCards {
     }
   
     public void showWar() {
-        System.out.println("War!!!!");
+        System.out.println("War!!!!\n");
     }
 }
