@@ -63,7 +63,7 @@ public class GroupOfCards {
      * @return the size of the group of cards
      */
     public int getSize() {
-        return this.cards.size();
+        return size;
     }
 
     /**
@@ -86,7 +86,7 @@ public class GroupOfCards {
      * Adds this cards collection to the winning player
      */
     public void addToWinner(Player p1){
-        //The players hand is private so you cant access it to add cards to it.
+        //In player class hand is private so you cant access it to add cards to it.
         //We need an addToHand method in the player class.
         //p1.addToHand(cards);
         
