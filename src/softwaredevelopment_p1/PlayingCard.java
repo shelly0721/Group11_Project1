@@ -57,12 +57,12 @@ public class PlayingCard extends Card implements Comparable{
     //it can return both if they are equal
     public ArrayList<PlayingCard> compareCards(ArrayList<PlayingCard> cardPile){
         ArrayList<PlayingCard> result = new ArrayList();
-        cardPile.add(this);
+//        cardPile.add(this);
         Collections.sort(cardPile);
         Collections.reverse(cardPile);
         PlayingCard first = cardPile.get(0);
         for(int i = 1; i<cardPile.size(); i++){
-            if(cardPile.get(i).value>=(first.value)){
+            if(cardPile.get(i).value==(first.value)){
                 result.add(cardPile.get(i));
             }
         }

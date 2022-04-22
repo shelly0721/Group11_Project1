@@ -32,8 +32,5 @@ public class DiscardPile extends GroupOfCards {
         Collections.shuffle(getCards());
     
     }   
-    
-    public ArrayList<Card> getCard() {
-        return getCards();
-    }
+
 }

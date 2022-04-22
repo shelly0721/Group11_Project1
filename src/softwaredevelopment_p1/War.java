@@ -15,6 +15,7 @@ public class War extends GroupOfCards {
    public void addToWinner (Player player) { 
        
         player.getDiscardPile().addAll(this.getCards());
+        this.getCards().clear();
    }
           
             

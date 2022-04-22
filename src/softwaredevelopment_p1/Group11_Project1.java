@@ -58,6 +58,7 @@ public class Group11_Project1 {
                         System.out.println("----------------------------------------");
                         System.out.println();
                         war.playRound();
+                        war.checkForLosers();
                         winner = war.checkForWinner();
 
                         break;
@@ -67,6 +68,7 @@ public class Group11_Project1 {
                         System.out.println("----------------------------------------");
                         System.out.println();
                         war.showScores();
+                        war.checkForLosers();
                         winner = war.checkForWinner();
                         break;
                     case 3:

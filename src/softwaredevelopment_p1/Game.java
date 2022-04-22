@@ -24,6 +24,7 @@ public class Game {
     private final String name="War" ;//the title of the game
     private ArrayList<Player> players;// the players of the game
     private War war = new War(0);
+    private ArrayList<Player> losers;//disqualified losing players
 
     public Game() {
 //        this.name = name;
@@ -87,6 +88,7 @@ public class Game {
         
         for(Player player: this.players){
             while(tempHand.getCards().size() < cardsDealt){
+                deck.getCards().get(0).setPlayer(player);
                 tempHand.add(deck.getCards().get(0));
                 deck.getCards().remove(0);
             }
@@ -125,14 +127,11 @@ public class Game {
         }
         ArrayList<PlayingCard> max = new ArrayList<>();
         max.add(round.get(0));
-        for(PlayingCard card: round){
-            if(max.size() != 2){
-                PlayingCard temp = max.get(0);
-                max.clear();
-                max.add(temp.compareTo(card));
-            }
-            break;
-        }
+        PlayingCard temp = max.get(0);
+        max.clear();
+        max.addAll(temp.compareCards(round));
+        System.out.println(max);
+        System.out.println(round);
 
         if(max.size() == 1){
             this.singleWinner(max.get(0), round);
@@ -165,6 +164,7 @@ public class Game {
     public void singleWinner(PlayingCard card, ArrayList<PlayingCard> round){
         card.getPlayer().getDiscardPile().addAll(round);
         card.getPlayer().announceWin();
+//        System.out.println(card.getPlayer().getDiscardPile().getCards());
         this.updateScores();
     }
     
@@ -186,14 +186,11 @@ public class Game {
         }
         ArrayList<PlayingCard> max = new ArrayList<>();
         max.add(roundOfWar.getCards().get(0));
-        for(PlayingCard card: roundOfWar.getCards()){
-            if(max.size() != 2){
-                PlayingCard temp = max.get(0);
-                max.clear();
-                max.add(temp.compareTo(card));
-            }
-            break;
-        }
+
+        PlayingCard temp = max.get(0);
+        max.clear();
+        max.addAll(temp.compareCards(roundOfWar.getCards()));
+
 
         if(max.size() == 1){
             this.singleWinner(max.get(0), roundOfWar.getCards());
@@ -210,6 +207,7 @@ public class Game {
      */
     public void updateScores(){
         for(Player player: this.getPlayers()){
+//            System.out.println(player.getDiscardPile().getCards());
             player.setScore();
         }
     }
@@ -219,17 +217,32 @@ public class Game {
      * and declares a winner if needed
      * @return 
      */
-    public Player checkForWinner(){
+    public String checkForWinner(){
         Player winner;
         for(Player player: this.getPlayers()){
             if(player.getScore() == 52){
                 this.declareWinner(player);
-                return player;
+                return player.getName();
+            }
+        }  
+        return "";
+    }
+    
+    public void checkForLosers(){
+        Player loser;
+        for(Player player: this.getPlayers()){
+            if(player.getHand().getCards().size() == 0){
+                this.removeLosers(player);
             }
         }  
     }
-
+    
+    public void removeLosers(Player player){
+        this.players.remove(player);
+        this.losers.add(player);
+        player.announceLoss();
     }
+
     
 
 //    /**

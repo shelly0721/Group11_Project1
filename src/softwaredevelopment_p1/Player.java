@@ -62,7 +62,8 @@ public class Player {
 //        return this.hand.playTopCard();
 //    }
     public void setScore(){
-        this.score = this.discard.getSize();
+//        System.out.printf("I'm in the method :> %d\n", this.discard.getSize());
+        this.score = this.discard.getCards().size();
     }
     
     /**
@@ -120,5 +121,9 @@ public class Player {
     
     public void announceWin(){
         System.out.printf("%s won that round!\n", this.getName());
+    }
+    
+    public void announceLoss(){
+        System.out.printf("%s lost in that round!\n", this.getName());
     }
 }
