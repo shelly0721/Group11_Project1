@@ -4,6 +4,9 @@
  */
 package softwaredevelopment_p1;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author Dani
@@ -46,6 +49,25 @@ public class PlayingCard extends Card implements Comparable{
         else{
             return -10;
         }
+    }
+    
+    //To use
+    //take one card and compare it with a list of other cards
+    //the method will return a list with the highest cards
+    //it can return both if they are equal
+    public ArrayList<PlayingCard> compareCards(ArrayList<PlayingCard> cardPile){
+        ArrayList<PlayingCard> result = new ArrayList();
+        cardPile.add(this);
+        Collections.sort(cardPile);
+        Collections.reverse(cardPile);
+        PlayingCard first = cardPile.get(0);
+        for(int i = 1; i<cardPile.size(); i++){
+            if(cardPile.get(i).value>=(first.value)){
+                result.add(cardPile.get(i));
+            }
+        }
+        result.add(first);
+        return result;
     }
     
     public Player getPlayer(){
