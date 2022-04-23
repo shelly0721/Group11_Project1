@@ -49,63 +49,96 @@ public class PlayerTest {
      * Test of setName method, of class Player.
      */
     @Test
-    public void testSetName() {
+    public void testSetNameGood() {
+        System.out.println("testSetName Good");
+        Player instance = new Player("");
+        instance.setName("player1");
+        assertEquals("player1",instance.getName());
     }
 
     /**
      * Test of setScore method, of class Player.
      */
     @Test
-    public void testSetScore() {
+    public void testSetScoreGood() {
+        System.out.println("testSetName Good");
+        Player instance = new Player("player1");
+        
+        instance.getDiscardPile().getCards().add(new PlayingCard(3,"Hearts"));
+        instance.getDiscardPile().getCards().add(new PlayingCard(4,"Hearts"));
+        instance.setScore();
+        assertEquals(2 ,instance.getScore());
     }
 
+    
+   
+    
+    
     /**
      * Test of getScore method, of class Player.
      */
-    @Test
-    public void testGetScoreBoundary() {
-        System.out.println("Test get score boundary");
-    Player player = new Player(0, 0);
-    assertEquals(player.getScore(), 0);
-    }
- @Test
-    public void testGetScoreBad() {
-        System.out.println("Test get score bad");
-    Player player = new Player(-8, -9);
-    assertEquals(player.getScore(), 0);
-    }
-    
+   
      @Test
     public void testGetScoreGood() {
         System.out.println("Test get score good");
-    Player player = new Player(8, 9);
-    assertEquals(player.getScore(), 0);
+        Player player1 = new Player("player1");      
+        assertEquals(0, player1.getScore());
     }
+    
+ @Test
+    public void testGetScoreBad() {
+        System.out.println("Test get score bad");
+        Player player1 = new Player("player1");
+        assertEquals(player1.getScore(), 0);
+    }
+    
+     @Test
+    public void testGetScoreBoundary() {
+        System.out.println("Test get score boundary");
+   Player player1 = new Player("player1");
+    assertEquals(player1.getScore(), 0);
+    }
+    
     /**
      * Test of showScore method, of class Player.
      */
     @Test
-    public void testShowScore() {
-        System.out.println("Test show cards good");
-        Player p = new Player(9,8);
-        
-        
-     
-        
+    public void testShowScoreGood() {
+        System.out.println("Test showScore Good");
+        Player instance = new Player("player1");
+    
+        assertEquals(true, instance.getName().equals("player1") && instance.getScore() == 0);
     }
 
+    
+    
     /**
      * Test of clearStreak method, of class Player.
      */
     @Test
-    public void testClearStreak() {
+    public void testClearStreakGood() {
+        System.out.println("Test clearStreak Good");
+        Player instance = new Player("player1");
+        instance.addStreak();
+        instance.addStreak();
+        System.out.println(instance.getStreak());
+        
+        instance.clearStreak();
+        assertEquals(true, instance.getStreak() == 0);
     }
 
+      
+        
     /**
      * Test of addStreak method, of class Player.
      */
     @Test
-    public void testAddStreak() {
+    public void testAddStreakGood() {      
+        System.out.println("TestAddStreak Good");
+        Player instance = new Player("player1");
+        instance.addStreak();
+   
+        assertEquals(true, instance.getStreak() == 1);
     }
 
     /**
@@ -114,8 +147,8 @@ public class PlayerTest {
     @Test
     public void testGetStreakBad() {
         System.out.println("Test get streak bad");
-        Player player = new Player(-9);
-        assertEquals(player.getStreak(), 0);
+        Player player1 = new Player("player1");
+        assertEquals(0, player1.getStreak());
         
         
     }
@@ -124,8 +157,8 @@ public class PlayerTest {
 
      public void testGetStreakBoundary() {
         System.out.println("Test get streak boundary");
-        Player player = new Player(0);
-        assertEquals(player.getStreak(), 0);
+        Player player1 = new Player("player1");
+        assertEquals(0, player1.getStreak());
         
         
     }
@@ -133,8 +166,8 @@ public class PlayerTest {
      @Test
     public void testGetStreakGood() {
         System.out.println("Test get streak boundary");
-        Player player = new Player(8);
-        assertEquals(player.getStreak(), 0);
+        Player player1 = new Player("player1");
+        assertEquals(0, player1.getStreak());
         
         
     }
@@ -143,14 +176,29 @@ public class PlayerTest {
      * Test of addToHand method, of class Player.
      */
     @Test
-    public void testAddToHand() {
+    public void testAddToHandGood() {
+        System.out.println("TestAddToHand Good");
+        Player instance = new Player("player1");
+     
+        instance.addToHand(new PlayingCard(3,"Heart"));
+        instance.addToHand(new PlayingCard(4,"Heart"));
+        
+        assertEquals(true, instance.getHand().getCards().size() == 2);
     }
+    
+     
 
     /**
      * Test of getHand method, of class Player.
      */
     @Test
     public void testGetHand() {
+        System.out.println("TestAddToHand Good");
+        Player instance = new Player("player1");
+        PlayingCard card = new PlayingCard(3,"Heart");
+        instance.addToHand(card);
+  
+        assertEquals(card, instance.getHand().getCards().get(0));
     }
 
     /**
@@ -158,27 +206,63 @@ public class PlayerTest {
      */
     @Test
     public void testGetDiscardPile() {
+        System.out.println("TestGetDiscardPile Good");
+        Player instance = new Player("player1");
+        PlayingCard card = new PlayingCard(3,"Heart");
+        instance.getDiscardPile().getCards().add(card);
+        instance.getDiscardPile();
+  
+        assertEquals(card, instance.getDiscardPile().getCards().get(0));
+        
     }
-
+    
+    
     /**
      * Test of playCard method, of class Player.
      */
     @Test
-    public void testPlayCard() {
+    public void testPlayCardGood() {
+        System.out.println("TestPlayCard Good");
+        Player instance = new Player("player1");
+      
+        
+        PlayingCard card = new PlayingCard(3,"Heart");
+        PlayingCard card2 = new PlayingCard(4,"Heart");
+        instance.getHand().getCards().add(card);
+        instance.getHand().getCards().add(card2);
+ 
+        instance.getDiscardPile();
+  
+        assertEquals(true, instance.getHand().getCards().get(0) == card);
+        
     }
 
+    
+    
+       
     /**
      * Test of announceWin method, of class Player.
      */
     @Test
-    public void testAnnounceWin() {
+    public void testAnnounceWinGood() {
+        System.out.println("TestAnnounceWin Good");
+        Player instance = new Player("player1");
+        instance.announceWin();
+        assertEquals("player1", instance.getName());
     }
-
+    
+       
     /**
      * Test of announceLoss method, of class Player.
      */
     @Test
     public void testAnnounceLoss() {
+        System.out.println("TestAnnounceLoss Good");
+        Player instance = new Player("player1");
+        instance.announceLoss();
+        assertEquals("player1", instance.getName());
     }
+    
+
     
 }

@@ -25,9 +25,7 @@ public class HandTest {
         CardFactory cf = new CardFactory();
         GroupOfCards deck = new GroupOfCards(52);   
         
-       
-        
-        assertEquals(true,(deck.getCards().size()>0));
+      assertEquals(true,(deck.getCards().size()>0));
     }
     
      @Test
