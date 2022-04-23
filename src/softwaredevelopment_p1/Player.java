@@ -63,13 +63,16 @@ public class Player {
 //    public PlayingCard playCard(){
 //        return this.hand.playTopCard();
 //    }
-    public void setScore(){
-        int temp = 0;
-        if(this.getDiscardPile().getCards().isEmpty() && this.score > 0){
-            temp = this.getHand().getCards().size();
+    public void setScore(int val){
+        if(val>=0){
+            this.score+=val;
         }
-//        System.out.printf("I'm in the method :> %d\n", this.discard.getSize());
-        this.score = this.getDiscardPile().getCards().size()+temp;
+//        int temp = 0;
+//        if(this.getDiscardPile().getCards().isEmpty() && this.score > 0){
+//            temp = this.getHand().getCards().size();
+//        }
+////        System.out.printf("I'm in the method :> %d\n", this.discard.getSize());
+//        this.score = this.getDiscardPile().getCards().size()+temp;
     }
     
     /**
