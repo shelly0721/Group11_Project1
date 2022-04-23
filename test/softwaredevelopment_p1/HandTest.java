@@ -20,8 +20,34 @@ public class HandTest {
      * Test of showDeck method, of class Hand.
      */
     @Test
-    public void testShowDeck() {
+    public void testShowDeckGood() {
+        System.out.println("testShoeDeckGood");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = new GroupOfCards(52);   
         
+       
+        
+        assertEquals(true,(deck.getCards().size()>0));
+    }
+    
+     @Test
+    public void testShowDeckBad() {
+        System.out.println("testShoeDeckGood");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = null;
+        assertEquals(false,(deck.getCards().size()>0));
+    }
+    
+     @Test
+    public void testShowDeckBoundary() {
+        System.out.println("testShoeDeckGood");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = new GroupOfCards(1);   
+        assertEquals(false,(deck.getCards().size()>0));
+       
+       
+        
+        assertEquals(true,(deck.getCards().size()>0));
     }
 
     /**
@@ -72,7 +98,32 @@ public class HandTest {
      * Test of shuffleCards method, of class Hand.
      */
     @Test
-    public void testShuffleCards() {
+    public void testShuffleCardsGood() {
+        System.out.println("testShuffleCardsGood");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = cf.getDeck();
+        Hand hand = new Hand(1);
+        assertEquals(hand.playTopCard(), deck.getCards().get(0));
+        
+    }
+    @Test
+    public void testShuffleCardsBad() {
+        System.out.println("testShuffleCardsBad");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = cf.getDeck();
+        Hand hand = new Hand(5);
+        assertEquals(hand.playTopCard(), deck.getCards().get(0));
+        
+    }
+    
+     @Test
+     public void testShuffleCardsBoundary() {
+        System.out.println("testShuffleCardsBad");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = cf.getDeck();
+        Hand hand = new Hand(2);
+        assertEquals(hand.playTopCard(), deck.getCards().get(0));
+        
     }
     
 }
