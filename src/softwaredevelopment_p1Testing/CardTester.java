@@ -17,7 +17,7 @@ import softwaredevelopment_p1.*;
  * @author dancye
  * 
  */
-public abstract class Card{
+public abstract class CardTester{
     //default modifier for child classes
 
     /**

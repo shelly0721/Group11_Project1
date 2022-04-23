@@ -18,23 +18,23 @@ import softwaredevelopment_p1.*;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
-public class Player {
+public class PlayerTester {
 
     private String name; //the unique name for this player
     private int winStreak;
     private int score;
-    private Hand hand;
-    private DiscardPile discard;
+    private HandTester hand;
+    private DiscardPileTester discard;
 
     /**
      * A constructor that allows you to set the player's unique ID
      *
      * @param name the unique ID to assign to this player.
      */
-    public Player(String name) {
+    public PlayerTester(String name) {
         this.setName(name);
-        this.hand = new Hand(0);
-        this.discard = new DiscardPile(0);
+        this.hand = new HandTester(0);
+        this.discard = new DiscardPileTester(0);
         this.score = 0;
         this.winStreak = 0;
         
@@ -62,7 +62,7 @@ public class Player {
      * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
      * with logic to play your game.
 //     */
-//    public PlayingCard playCard(){
+//    public PlayingCardTester playCard(){
 //        return this.hand.playTopCard();
 //    }
     public void setScore(){
@@ -111,19 +111,19 @@ public class Player {
         return this.winStreak;
     }
     
-    public void addToHand(PlayingCard card){
+    public void addToHand(PlayingCardTester card){
         this.hand.add(card);
     }
 
-    public Hand getHand(){
+    public HandTester getHand(){
         return this.hand;
     }
     
-    public DiscardPile getDiscardPile(){
+    public DiscardPileTester getDiscardPile(){
         return this.discard;
     }
     
-    public PlayingCard playCard(){
+    public PlayingCardTester playCard(){
         return this.hand.playTopCard();
     }
     

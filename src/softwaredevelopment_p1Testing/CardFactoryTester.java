@@ -10,13 +10,13 @@ import softwaredevelopment_p1.*;
  *
  * @author aliab
  */
-public class CardFactory {
-    public GroupOfCards getDeck(){
-        GroupOfCards deck = new GroupOfCards(52);
+public class CardFactoryTester {
+    public GroupOfCardsTester getDeck(){
+        GroupOfCardsTester deck = new GroupOfCardsTester(52);
         String[] suit = {"clubs", "diamonds", "hearts", "spades"};
         for (int i=0;i<4;i++){
             for (int j=2; j<15; j++){
-                deck.add(new PlayingCard(j,suit[i]));
+                deck.add(new PlayingCardTester(j,suit[i]));
             }
         }
         return deck;

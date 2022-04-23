@@ -26,18 +26,18 @@ import java.util.Collections;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
-public class GroupOfCards {
+public class GroupOfCardsTester {
 
     //The group of cards, stored in an ArrayList
-    private ArrayList<PlayingCard> cards;
+    private ArrayList<PlayingCardTester> cards;
     private int size;//the size of the grouping
 
-    public GroupOfCards(int size) {
-        this.cards = new ArrayList<PlayingCard>();
+    public GroupOfCardsTester(int size) {
+        this.cards = new ArrayList<PlayingCardTester>();
         this.size = size;
     }
 
-     public boolean compareCards(Card card){
+     public boolean compareCards(CardTester card){
        return true; //holding statement 
     };
     /**
@@ -45,7 +45,7 @@ public class GroupOfCards {
      *
      * @return the group of cards.
      */
-    public ArrayList<PlayingCard> getCards() {
+    public ArrayList<PlayingCardTester> getCards() {
         return cards;
     }
 
@@ -53,10 +53,10 @@ public class GroupOfCards {
         Collections.shuffle(cards);
     }
 
-    public void add(PlayingCard c){
+    public void add(PlayingCardTester c){
         cards.add(c);
     }
-    public void addAll(ArrayList<PlayingCard> manycards){
+    public void addAll(ArrayList<PlayingCardTester> manycards){
         cards.addAll(manycards);
     } 
     
@@ -77,16 +77,20 @@ public class GroupOfCards {
     /**
      * Display the collection of cards
      */
-    public void showDeck(){
-        for(Card e: cards){
-            //Uses toString method in Card
-            System.out.println(e);
-        }
+    public boolean showDeck(){
+        if(this.getCards().size() > 0){
+            for(CardTester e: this.cards){
+                //Uses toString method in CardTester
+                System.out.println(e);
+            return true;
+              } 
+           }
+        return false;
     }
     /**
      * Adds this cards collection to the winning player
      */
-    public void addToWinner(Player p1){
+    public void addToWinner(PlayerTester p1){
         //In player class hand is private so you cant access it to add cards to it.
         //We need an addToHand method in the player class.
         //p1.addToHand(cards);

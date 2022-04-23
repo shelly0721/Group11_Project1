@@ -4,9 +4,9 @@ import softwaredevelopment_p1.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DiscardPile extends GroupOfCards {
+public class DiscardPileTester extends GroupOfCardsTester {
    
-    public DiscardPile(int size) {
+    public DiscardPileTester(int size) {
         super(size);
     }
            
@@ -19,13 +19,15 @@ public class DiscardPile extends GroupOfCards {
 //        }
 //    }
     
-    public void showDeck() {
-        /* this method is called both when cards are put into deck and when 
-           cards are taken from the deck  */
-         for(Card e: getCards()){
-            //Uses toString method in Card
-            System.out.println(e);
-        }
+    public boolean showDeck() {
+        if(this.getCards().size() > 0){
+            for(CardTester e: this.getCards()){
+                //Uses toString method in CardTester
+                System.out.println(e);
+            return true;
+              } 
+           }
+        return false; 
     }
     
     

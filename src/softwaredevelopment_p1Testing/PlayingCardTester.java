@@ -12,15 +12,15 @@ import java.util.Collections;
  *
  * @author Dani
  */
-public class PlayingCard extends Card implements Comparable{
+public class PlayingCardTester extends CardTester implements Comparable{
     private int value;
     private String suit;
-    private Player player;
+    private PlayerTester player;
     
     //For toString method
     private String[] cardValues = {"0","0","2","3","4","5","6","7","8","9","10","Jack", "Queen", "King","Ace"};
     
-    public PlayingCard(int value, String suit){
+    public PlayingCardTester(int value, String suit){
         super();
         this.value = value;
         this.suit = suit;
@@ -36,11 +36,11 @@ public class PlayingCard extends Card implements Comparable{
     
     @Override
     public int compareTo(Object o){
-        if(o instanceof PlayingCard){
-            if(this.value>((PlayingCard)o).value){
+        if(o instanceof PlayingCardTester){
+            if(this.value>((PlayingCardTester)o).value){
                 return 1;
             }
-            else if (this.value<((PlayingCard)o).value){
+            else if (this.value<((PlayingCardTester)o).value){
                 return -1;
             }
             else{
@@ -56,12 +56,12 @@ public class PlayingCard extends Card implements Comparable{
     //take one card and compare it with a list of other cards
     //the method will return a list with the highest cards
     //it can return both if they are equal
-    public ArrayList<PlayingCard> compareCards(ArrayList<PlayingCard> cardPile){
-        ArrayList<PlayingCard> result = new ArrayList();
+    public ArrayList<PlayingCardTester> compareCards(ArrayList<PlayingCardTester> cardPile){
+        ArrayList<PlayingCardTester> result = new ArrayList();
 //        cardPile.add(this);
         Collections.sort(cardPile);
         Collections.reverse(cardPile);
-        PlayingCard first = cardPile.get(0);
+        PlayingCardTester first = cardPile.get(0);
         for(int i = 1; i<cardPile.size(); i++){
             if(cardPile.get(i).value==(first.value)){
                 result.add(cardPile.get(i));
@@ -71,11 +71,11 @@ public class PlayingCard extends Card implements Comparable{
         return result;
     }
     
-    public Player getPlayer(){
+    public PlayerTester getPlayer(){
         return player;
     }
     
-    public void setPlayer(Player p){
+    public void setPlayer(PlayerTester p){
         this.player = p;
     }
     

@@ -11,7 +11,7 @@ public class Group11_Project1 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Game war = new Game();
+        GameTester war = new GameTester();
         try{
             System.out.println("Please enter the number of players:");
             int numOfPlayers = 0;
@@ -22,7 +22,7 @@ public class Group11_Project1 {
                 while(war.getPlayers().size() < numOfPlayers){
                     System.out.printf("Player %d: Please enter your name \n", i+1);
                     String name = input.nextLine();
-                    Player player = new Player(name);
+                    PlayerTester player = new PlayerTester(name);
                     war.registerPlayer(player);
                     i++;
 //                    input.nextLine();
@@ -98,16 +98,16 @@ public class Group11_Project1 {
         }//while loop
 //        
         
-//        Player danielle = new Player("Danielle");
-//        Player shelly = new Player("Shelly");
-//        Player jenny = new Player("Jenny");
-//        Player ali = new Player("Ali");
+//        PlayerTester danielle = new PlayerTester("Danielle");
+//        PlayerTester shelly = new PlayerTester("Shelly");
+//        PlayerTester jenny = new PlayerTester("Jenny");
+//        PlayerTester ali = new PlayerTester("Ali");
 //
 //        war.registerPlayer(ali);
 //        war.registerPlayer(jenny);
 //        war.registerPlayer(shelly);
 //        war.registerPlayer(danielle);
-//        for(Player player: war.getPlayers()){
+//        for(PlayerTester player: war.getPlayers()){
 //            player.showScore();
 //            System.out.println();
 //        }

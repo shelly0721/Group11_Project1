@@ -4,29 +4,31 @@ import softwaredevelopment_p1.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class War extends GroupOfCards {
+public class WarTester extends GroupOfCardsTester {
 
-  private ArrayList<Card> temp = new ArrayList<>(); 
+  private ArrayList<CardTester> temp = new ArrayList<>(); 
     
-    public War(int size) {
+    public WarTester(int size) {
         super(size);
     }
     
     
-   public void addToWinner (Player player) { 
+   public void addToWinner (PlayerTester player) { 
        
         player.getDiscardPile().addAll(this.getCards());
         this.getCards().clear();
    }
           
             
-   public void showDeck() {
-        /* this method is called both when cards are put into deck and when 
-           cards are taken from the deck  */
-         for(Card e: getCards()) {
-            //Uses toString method in Card
-            System.out.println(e);
-        } 
+   public boolean showDeck() {
+        if(this.getCards().size() > 0){
+            for(CardTester e: this.getCards()){
+                //Uses toString method in CardTester
+                System.out.println(e);
+            return true;
+              } 
+           }
+        return false; 
     }
     
     

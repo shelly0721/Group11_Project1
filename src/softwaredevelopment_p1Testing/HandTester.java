@@ -3,23 +3,25 @@ package softwaredevelopment_p1Testing;
 import softwaredevelopment_p1.*;
 import java.util.Collections;
 
-public class Hand extends GroupOfCards {
+public class HandTester extends GroupOfCardsTester {
     
     
-    public Hand(int size) {
+    public HandTester(int size) {
         super(size);
     }
     
    
-     public void showDeck() {
+     public boolean showDeck() {
         if(this.getCards().size() > 0){
         /* this method is called both when cards are put into deck and when 
            cards are taken from the deck  */
-            for(Card e: getCards()) {
-               //Uses toString method in Card
+            for(CardTester e: getCards()) {
+               //Uses toString method in CardTester
                System.out.println(e);
+               return true;
            } 
         }
+        return false;
     }
     
     /* This method is called after comparing the rank of cards dueled to deck from players' hand. 
@@ -38,12 +40,12 @@ public class Hand extends GroupOfCards {
 //         return getCards().size();     
 //    }
     
-     /* This method is for "Playing Card," for player putting a card to deck. 
+     /* This method is for "Playing CardTester," for player putting a card to deck. 
         It removes the "card" in each players' ArrayList and returns that. 
      */
-     public PlayingCard playTopCard() {
+     public PlayingCardTester playTopCard() {
          if(this.getCards().size() > 0){
-            PlayingCard temp = (PlayingCard) getCards().get(0);       
+            PlayingCardTester temp = (PlayingCardTester) getCards().get(0);       
             getCards().remove(0);
             return temp;
          }

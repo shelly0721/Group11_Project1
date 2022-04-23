@@ -18,23 +18,44 @@ public class HandTest {
     }
 
     /**
-     * Test of showDeck method, of class Hand.
+     * Test of showDeck method, of class HandTester.
      */
     @Test
-    public void testShowDeck() {
-        
+    public void testShowDeckGood() {
+        System.out.println("testShowDeckGood");
+        CardFactoryTester cf = new CardFactoryTester();
+        GroupOfCardsTester deck = cf.getDeck();
+        HandTester hand = new HandTester(0);
+        //add multiple cards to HandTester
+        hand.add(deck.getCards().get(0));
+
+        //Top Card in the deck and playTopCard should still be the same card
+        assertEquals(hand.showDeck(), true);
+    }
+    
+        /**
+     * Test of showDeck method, of class HandTester.
+     */
+    @Test
+    public void testShowDeckBad() {
+        System.out.println("testShowDeckGood");
+        CardFactoryTester cf = new CardFactoryTester();
+        GroupOfCardsTester deck = cf.getDeck();
+        HandTester hand = new HandTester(0);
+        //Top Card in the deck and playTopCard should still be the same card
+        assertEquals(hand.showDeck(), false);
     }
 
     /**
-     * Test of playTopCard method, of class Hand.
+     * Test of playTopCard method, of class HandTester.
      */
     @Test
     public void testPlayTopCardGood() {
         System.out.println("testPlayTopCardGood");
-        CardFactory cf = new CardFactory();
-        GroupOfCards deck = cf.getDeck();
-        Hand hand = new Hand(0);
-        //add multiple cards to Hand
+        CardFactoryTester cf = new CardFactoryTester();
+        GroupOfCardsTester deck = cf.getDeck();
+        HandTester hand = new HandTester(0);
+        //add multiple cards to HandTester
         hand.add(deck.getCards().get(0));
         hand.add(deck.getCards().get(1));
         hand.add(deck.getCards().get(2));
@@ -42,27 +63,27 @@ public class HandTest {
         assertEquals(hand.playTopCard(), deck.getCards().get(0));
     }
     /**
-     * Test of playTopCard method, of class Hand.
+     * Test of playTopCard method, of class HandTester.
      */
     @Test
     public void testPlayTopCardBad() {
         System.out.println("testPlayTopCardBad");
-        Hand hand = new Hand(0);
+        HandTester hand = new HandTester(0);
         
         //Top Card in the deck and playTopCard should still be the same card
         assertEquals(hand.playTopCard(), null);
     }
     
     /**
-     * Test of playTopCard method, of class Hand.
+     * Test of playTopCard method, of class HandTester.
      */
     @Test
     public void testPlayTopCardBoundary() {
         System.out.println("testPlayTopCardBoundary");
-        CardFactory cf = new CardFactory();
-        GroupOfCards deck = cf.getDeck();
-        Hand hand = new Hand(0);
-        //add multiple cards to Hand
+        CardFactoryTester cf = new CardFactoryTester();
+        GroupOfCardsTester deck = cf.getDeck();
+        HandTester hand = new HandTester(0);
+        //add multiple cards to HandTester
         hand.add(deck.getCards().get(0));
 
         //Top Card in the deck and playTopCard should still be the same card
@@ -70,7 +91,7 @@ public class HandTest {
     }
 
     /**
-     * Test of shuffleCards method, of class Hand.
+     * Test of shuffleCards method, of class HandTester.
      */
     @Test
     public void testShuffleCards() {

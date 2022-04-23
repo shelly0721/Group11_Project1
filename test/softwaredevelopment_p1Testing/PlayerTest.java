@@ -18,120 +18,120 @@ public class PlayerTest {
     }
 
     /**
-     * Test of getName method, of class Player.
+     * Test of getName method, of class PlayerTester.
      */
     @Test
     public void testGetNameGood() {
         System.out.println("testGetNameGood");
-        Player player = new Player("Bob");
+        PlayerTester player = new PlayerTester("Bob");
         assertEquals(player.getName(), "Bob");
     }
     
     /**
-     * Test of getName method, of class Player.
+     * Test of getName method, of class PlayerTester.
      */
     @Test
     public void testGetNameBad() {
         System.out.println("testGetNameBad");
-        Player player = new Player("");
+        PlayerTester player = new PlayerTester("");
         assertEquals(player.getName(), null);
     }
 
     /**
-     * Test of getName method, of class Player.
+     * Test of getName method, of class PlayerTester.
      */
     @Test
     public void testGetNameBoundary() {
         System.out.println("testGetNameBoundary");
-        Player player = new Player("1");
+        PlayerTester player = new PlayerTester("1");
         assertEquals(player.getName(), "1");
     }
     /**
-     * Test of setName method, of class Player.
+     * Test of setName method, of class PlayerTester.
      */
     @Test
     public void testSetName() {
     }
 
     /**
-     * Test of setScore method, of class Player.
+     * Test of setScore method, of class PlayerTester.
      */
     @Test
     public void testSetScore() {
     }
 
     /**
-     * Test of getScore method, of class Player.
+     * Test of getScore method, of class PlayerTester.
      */
     @Test
     public void testGetScore() {
     }
 
     /**
-     * Test of showScore method, of class Player.
+     * Test of showScore method, of class PlayerTester.
      */
     @Test
     public void testShowScore() {
     }
 
     /**
-     * Test of clearStreak method, of class Player.
+     * Test of clearStreak method, of class PlayerTester.
      */
     @Test
     public void testClearStreak() {
     }
 
     /**
-     * Test of addStreak method, of class Player.
+     * Test of addStreak method, of class PlayerTester.
      */
     @Test
     public void testAddStreak() {
     }
 
     /**
-     * Test of getStreak method, of class Player.
+     * Test of getStreak method, of class PlayerTester.
      */
     @Test
     public void testGetStreak() {
     }
 
     /**
-     * Test of addToHand method, of class Player.
+     * Test of addToHand method, of class PlayerTester.
      */
     @Test
     public void testAddToHand() {
     }
 
     /**
-     * Test of getHand method, of class Player.
+     * Test of getHand method, of class PlayerTester.
      */
     @Test
     public void testGetHand() {
     }
 
     /**
-     * Test of getDiscardPile method, of class Player.
+     * Test of getDiscardPile method, of class PlayerTester.
      */
     @Test
     public void testGetDiscardPile() {
     }
 
     /**
-     * Test of playCard method, of class Player.
+     * Test of playCard method, of class PlayerTester.
      */
     @Test
     public void testPlayCard() {
     }
 
     /**
-     * Test of announceWin method, of class Player.
+     * Test of announceWin method, of class PlayerTester.
      */
     @Test
     public void testAnnounceWin() {
     }
 
     /**
-     * Test of announceLoss method, of class Player.
+     * Test of announceLoss method, of class PlayerTester.
      */
     @Test
     public void testAnnounceLoss() {

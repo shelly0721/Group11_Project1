@@ -20,14 +20,14 @@ import java.util.ArrayList;
  *  @author Paul Bonenfant Jan 2020
  *
  */
-public class Game {
+public class GameTester {
 
     private final String name="War" ;//the title of the game
-    private ArrayList<Player> players;// the players of the game
-    private War war = new War(0);
-    private ArrayList<Player> losers;//disqualified losing players
+    private ArrayList<PlayerTester> players;// the players of the game
+    private WarTester war = new WarTester(0);
+    private ArrayList<PlayerTester> losers;//disqualified losing players
 
-    public Game() {
+    public GameTester() {
 //        this.name = name;
         players = new ArrayList();
     }
@@ -42,14 +42,14 @@ public class Game {
     /**
      * @return the players of this game
      */
-    public ArrayList<Player> getPlayers() {
+    public ArrayList<PlayerTester> getPlayers() {
         return players;
     }
 
     /**
      * @param players the players of this game
      */
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(ArrayList<PlayerTester> players) {
         this.players = players;
     }
     
@@ -57,9 +57,9 @@ public class Game {
      * Declares the provided player as the winner of the game;
      * @param player 
      */
-    public void declareWinner(Player player){
+    public void declareWinner(PlayerTester player){
         player.addStreak();
-        for(Player p: this.players){
+        for(PlayerTester p: this.players){
             if(p != player){
                 p.clearStreak();
             }
@@ -70,7 +70,7 @@ public class Game {
      * Adds the provided player to the total players in the game
      * @param player
      */
-    public void registerPlayer(Player player){
+    public void registerPlayer(PlayerTester player){
         if(!(this.players.contains(player))){
             this.players.add(player);
         }
@@ -80,14 +80,14 @@ public class Game {
      * Evenly deals cards to the number of players in the game
      */
     public void dealCards(){
-        CardFactory cf = new CardFactory();
-        GroupOfCards deck = cf.getDeck();
+        CardFactoryTester cf = new CardFactoryTester();
+        GroupOfCardsTester deck = cf.getDeck();
         deck.shuffle();
         int cardsDealt = deck.getSize() / this.players.size();
-        GroupOfCards tempHand = new GroupOfCards(cardsDealt);
+        GroupOfCardsTester tempHand = new GroupOfCardsTester(cardsDealt);
 //        System.out.println(deck.getCards().get(0));
         
-        for(Player player: this.players){
+        for(PlayerTester player: this.players){
             while(tempHand.getCards().size() < cardsDealt){
                 deck.getCards().get(0).setPlayer(player);
                 tempHand.add(deck.getCards().get(0));
@@ -105,8 +105,8 @@ public class Game {
      */
     public void displayWinner(){
         int max = 0;
-        Player winner=this.players.get(0);
-        for(Player player: this.players){
+        PlayerTester winner=this.players.get(0);
+        for(PlayerTester player: this.players){
             if(player.getScore() > max){
                 max=player.getScore();
                 winner = player;
@@ -125,13 +125,13 @@ public class Game {
         this.checkForLosers();
         this.checkForWinner();
         this.discardToHand();
-        ArrayList<PlayingCard> round = new ArrayList<>();
-        for(Player player: this.players){
+        ArrayList<PlayingCardTester> round = new ArrayList<>();
+        for(PlayerTester player: this.players){
             round.add(player.playCard());
         }
-        ArrayList<PlayingCard> max = new ArrayList<>();
+        ArrayList<PlayingCardTester> max = new ArrayList<>();
         max.add(round.get(0));
-        PlayingCard temp = max.get(0);
+        PlayingCardTester temp = max.get(0);
         max.clear();
         max.addAll(temp.compareCards(round));
         System.out.println(max);
@@ -154,7 +154,7 @@ public class Game {
      * Displays the scores for every player in the game
      */
     public void showScores(){
-        for(Player player: this.getPlayers()){
+        for(PlayerTester player: this.getPlayers()){
             player.showScore();
         }
     }
@@ -165,7 +165,7 @@ public class Game {
      * @param card
      * @param round 
      */
-    public void singleWinner(PlayingCard card, ArrayList<PlayingCard> round){
+    public void singleWinner(PlayingCardTester card, ArrayList<PlayingCardTester> round){
         card.getPlayer().getDiscardPile().addAll(round);
         card.getPlayer().announceWin();
 //        System.out.println(card.getPlayer().getDiscardPile().getCards());
@@ -176,27 +176,27 @@ public class Game {
      * Goes through the process of a war duel
      * @param warringCards 
      */
-    public void warDuel(ArrayList<PlayingCard> warringCards, 
-            ArrayList<PlayingCard> roundCards){
+    public void warDuel(ArrayList<PlayingCardTester> warringCards, 
+            ArrayList<PlayingCardTester> roundCards){
         
         this.checkForLosers();
         this.checkForWinner();
         this.discardToHand();
-        War roundOfWar = new War(warringCards.size());
+        WarTester roundOfWar = new WarTester(warringCards.size());
 //        roundOfWar.addAll(warringCards);
         roundOfWar.showWar();
-        ArrayList<Player> warPlayers = new ArrayList<>();
-        for(PlayingCard card: warringCards){
+        ArrayList<PlayerTester> warPlayers = new ArrayList<>();
+        for(PlayingCardTester card: warringCards){
             warPlayers.add(card.getPlayer());
             
         }
-        for(Player player: warPlayers){
+        for(PlayerTester player: warPlayers){
             roundOfWar.getCards().add(player.playCard());
         }
-        ArrayList<PlayingCard> max = new ArrayList<>();
+        ArrayList<PlayingCardTester> max = new ArrayList<>();
         max.add(roundOfWar.getCards().get(0));
 
-        PlayingCard temp = max.get(0);
+        PlayingCardTester temp = max.get(0);
         max.clear();
         max.addAll(temp.compareCards(roundOfWar.getCards()));
 
@@ -216,7 +216,7 @@ public class Game {
      * Updates the scores for every player in the game
      */
     public void updateScores(){
-        for(Player player: this.getPlayers()){
+        for(PlayerTester player: this.getPlayers()){
 //            System.out.println(player.getDiscardPile().getCards());
             System.out.println(player.getHand().getCards().size());
             player.setScore();
@@ -229,8 +229,8 @@ public class Game {
      * @return 
      */
     public String checkForWinner(){
-        Player winner;
-        for(Player player: this.getPlayers()){
+        PlayerTester winner;
+        for(PlayerTester player: this.getPlayers()){
             if(player.getScore() == 52){
                 this.declareWinner(player);
                 return player.getName();
@@ -240,8 +240,8 @@ public class Game {
     }
     
     public void checkForLosers(){
-        Player loser;
-        for(Player player: this.getPlayers()){
+        PlayerTester loser;
+        for(PlayerTester player: this.getPlayers()){
             if(player.getHand().getCards().size() == 0 &&
                     player.getDiscardPile().getCards().size() == 0){
                 this.removeLosers(player);
@@ -249,14 +249,14 @@ public class Game {
         }  
     }
     
-    public void removeLosers(Player player){
+    public void removeLosers(PlayerTester player){
         this.players.remove(player);
         this.losers.add(player);
         player.announceLoss();
     }
     
     public void discardToHand(){
-        for(Player player: this.getPlayers()){
+        for(PlayerTester player: this.getPlayers()){
             if(player.getHand().getCards().size() == 0 &&
                     player.getDiscardPile().getCards().size() > 0){
                 int score = player.getScore();
