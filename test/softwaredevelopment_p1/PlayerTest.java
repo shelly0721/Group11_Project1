@@ -42,8 +42,8 @@ public class PlayerTest {
     @Test
     public void testGetNameBoundary() {
         System.out.println("testGetNameBoundary");
-        Player player = new Player("1");
-        assertEquals(player.getName(), "1");
+        Player player = new Player("Bill");
+        assertEquals(player.getName(),"Bill");
     }
     /**
      * Test of setName method, of class Player.
@@ -63,14 +63,35 @@ public class PlayerTest {
      * Test of getScore method, of class Player.
      */
     @Test
-    public void testGetScore() {
+    public void testGetScoreBoundary() {
+        System.out.println("Test get score boundary");
+    Player player = new Player(0, 0);
+    assertEquals(player.getScore(), 0);
     }
-
+ @Test
+    public void testGetScoreBad() {
+        System.out.println("Test get score bad");
+    Player player = new Player(-8, -9);
+    assertEquals(player.getScore(), 0);
+    }
+    
+     @Test
+    public void testGetScoreGood() {
+        System.out.println("Test get score good");
+    Player player = new Player(8, 9);
+    assertEquals(player.getScore(), 0);
+    }
     /**
      * Test of showScore method, of class Player.
      */
     @Test
     public void testShowScore() {
+        System.out.println("Test show cards good");
+        Player p = new Player(9,8);
+        
+        
+     
+        
     }
 
     /**
@@ -91,7 +112,31 @@ public class PlayerTest {
      * Test of getStreak method, of class Player.
      */
     @Test
-    public void testGetStreak() {
+    public void testGetStreakBad() {
+        System.out.println("Test get streak bad");
+        Player player = new Player(-9);
+        assertEquals(player.getStreak(), 0);
+        
+        
+    }
+    
+     @Test
+
+     public void testGetStreakBoundary() {
+        System.out.println("Test get streak boundary");
+        Player player = new Player(0);
+        assertEquals(player.getStreak(), 0);
+        
+        
+    }
+    
+     @Test
+    public void testGetStreakGood() {
+        System.out.println("Test get streak boundary");
+        Player player = new Player(8);
+        assertEquals(player.getStreak(), 0);
+        
+        
     }
 
     /**

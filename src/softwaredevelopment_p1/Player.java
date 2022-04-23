@@ -65,11 +65,11 @@ public class Player {
 //    }
     public void setScore(){
         int temp = 0;
-        if(this.getDiscardPile().getCards().size() == 0 && this.score > 0){
+        if(this.getDiscardPile().getCards().isEmpty() && this.score > 0){
             temp = this.getHand().getCards().size();
         }
 //        System.out.printf("I'm in the method :> %d\n", this.discard.getSize());
-        this.score = this.discard.getCards().size()+temp;
+        this.score = this.getDiscardPile().getCards().size()+temp;
     }
     
     /**
