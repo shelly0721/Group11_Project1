@@ -28,7 +28,8 @@ public class Game {
 
     public Game() {
 //        this.name = name;
-        players = new ArrayList();
+        players = new ArrayList<>();
+        losers = new ArrayList<>();
     }
 
     /**
@@ -83,6 +84,7 @@ public class Game {
         GroupOfCards deck = cf.getDeck();
         deck.shuffle();
         int cardsDealt = deck.getSize() / this.players.size();
+        System.out.printf("cardsDealt = %d", cardsDealt);
         GroupOfCards tempHand = new GroupOfCards(cardsDealt);
 //        System.out.println(deck.getCards().get(0));
         
@@ -195,6 +197,7 @@ public class Game {
         ArrayList<PlayingCard> max = new ArrayList<>();
         max.add(roundOfWar.getCards().get(0));
 
+        System.out.println("round of war" + roundOfWar.getCards());
         PlayingCard temp = max.get(0);
         max.clear();
         max.addAll(temp.compareCards(roundOfWar.getCards()));
@@ -218,6 +221,8 @@ public class Game {
         for(Player player: this.getPlayers()){
 //            System.out.println(player.getDiscardPile().getCards());
             System.out.println(player.getHand().getCards().size());
+            System.out.println(player.getName() + player.getHand().getCards());
+            System.out.println(player.getDiscardPile().getCards());
             player.setScore();
         }
     }
@@ -239,30 +244,40 @@ public class Game {
     }
     
     public void checkForLosers(){
-        Player loser;
-        for(Player player: this.getPlayers()){
-            if(player.getHand().getCards().size() == 0 &&
-                    player.getDiscardPile().getCards().size() == 0){
-                this.removeLosers(player);
-            }
-        }  
+        if(!this.players.isEmpty()){
+            ArrayList<Player> loser = new ArrayList<>();
+            for(Player player: this.getPlayers()){
+                if(player.getHand().getCards().isEmpty() &&
+                        player.getDiscardPile().getCards().isEmpty()){
+                    loser.add(player);
+
+                }
+            }  
+            this.removeLosers(loser);
+        }
     }
     
-    public void removeLosers(Player player){
-        this.players.remove(player);
-        this.losers.add(player);
-        player.announceLoss();
+    public void removeLosers(ArrayList<Player> lostPlayers){
+        if(!lostPlayers.isEmpty()){
+            this.players.removeAll(lostPlayers);
+            this.losers.addAll(lostPlayers);
+            for(Player player: lostPlayers){
+                player.announceLoss();
+            }
+        }
     }
     
     public void discardToHand(){
-        for(Player player: this.getPlayers()){
-            if(player.getHand().getCards().size() == 0 &&
-                    player.getDiscardPile().getCards().size() > 0){
-                int score = player.getScore();
-                player.getDiscardPile().shuffle();
-                player.getHand().addAll(player.getDiscardPile().getCards());
-                player.getDiscardPile().getCards().clear();
-                this.updateScores();
+        if(!this.players.isEmpty()){
+            for(Player player: this.getPlayers()){
+                if(player.getHand().getCards().size() == 0 &&
+                        player.getDiscardPile().getCards().size() > 0){
+                    int score = player.getScore();
+                    player.getDiscardPile().shuffle();
+                    player.getHand().addAll(player.getDiscardPile().getCards());
+                    player.getDiscardPile().getCards().clear();
+                    this.updateScores();
+                }
             }
         }
     }
