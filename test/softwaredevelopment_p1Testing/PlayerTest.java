@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package softwaredevelopment_p1;
+package softwaredevelopment_p1Testing;
 
+import softwaredevelopment_p1.*;
 import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 

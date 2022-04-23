@@ -1,4 +1,6 @@
-package softwaredevelopment_p1;
+package softwaredevelopment_p1Testing;
+
+import softwaredevelopment_p1.*;
 
 /**
  *
