@@ -21,13 +21,51 @@ public class HandTest {
      */
     @Test
     public void testShowDeck() {
+        
     }
 
     /**
      * Test of playTopCard method, of class Hand.
      */
     @Test
-    public void testPlayTopCard() {
+    public void testPlayTopCardGood() {
+        System.out.println("testPlayTopCardGood");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = cf.getDeck();
+        Hand hand = new Hand(0);
+        //add multiple cards to Hand
+        hand.add(deck.getCards().get(0));
+        hand.add(deck.getCards().get(1));
+        hand.add(deck.getCards().get(2));
+        //Top Card in the deck and playTopCard should still be the same card
+        assertEquals(hand.playTopCard(), deck.getCards().get(0));
+    }
+    /**
+     * Test of playTopCard method, of class Hand.
+     */
+    @Test
+    public void testPlayTopCardBad() {
+        System.out.println("testPlayTopCardBad");
+        Hand hand = new Hand(0);
+        
+        //Top Card in the deck and playTopCard should still be the same card
+        assertEquals(hand.playTopCard(), null);
+    }
+    
+    /**
+     * Test of playTopCard method, of class Hand.
+     */
+    @Test
+    public void testPlayTopCardBoundary() {
+        System.out.println("testPlayTopCardBoundary");
+        CardFactory cf = new CardFactory();
+        GroupOfCards deck = cf.getDeck();
+        Hand hand = new Hand(0);
+        //add multiple cards to Hand
+        hand.add(deck.getCards().get(0));
+
+        //Top Card in the deck and playTopCard should still be the same card
+        assertEquals(hand.playTopCard(), deck.getCards().get(0));
     }
 
     /**

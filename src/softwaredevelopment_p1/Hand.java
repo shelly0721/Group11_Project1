@@ -11,12 +11,14 @@ public class Hand extends GroupOfCards {
     
    
      public void showDeck() {
+        if(this.getCards().size() > 0){
         /* this method is called both when cards are put into deck and when 
            cards are taken from the deck  */
-         for(Card e: getCards()) {
-            //Uses toString method in Card
-            System.out.println(e);
-        } 
+            for(Card e: getCards()) {
+               //Uses toString method in Card
+               System.out.println(e);
+           } 
+        }
     }
     
     /* This method is called after comparing the rank of cards dueled to deck from players' hand. 
@@ -39,9 +41,12 @@ public class Hand extends GroupOfCards {
         It removes the "card" in each players' ArrayList and returns that. 
      */
      public PlayingCard playTopCard() {
-         PlayingCard temp = (PlayingCard) getCards().get(0);       
-         getCards().remove(0);
-         return temp;         
+         if(this.getCards().size() > 0){
+            PlayingCard temp = (PlayingCard) getCards().get(0);       
+            getCards().remove(0);
+            return temp;
+         }
+         return null;
      }
    
     
