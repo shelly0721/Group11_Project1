@@ -61,7 +61,7 @@ public class PlayerTest {
      */
     @Test
     public void testSetScoreGood() {
-        System.out.println("testSetName Good");
+        System.out.println("testSetScore Good");
         Player instance = new Player("player1");
         
         instance.getDiscardPile().getCards().add(new PlayingCard(3,"Hearts"));
@@ -81,8 +81,11 @@ public class PlayerTest {
      @Test
     public void testGetScoreGood() {
         System.out.println("Test get score good");
-        Player player1 = new Player("player1");      
-        assertEquals(0, player1.getScore());
+        Player instance = new Player("player1"); 
+        instance.getDiscardPile().getCards().add(new PlayingCard(3,"Hearts"));
+        instance.getDiscardPile().getCards().add(new PlayingCard(4,"Hearts"));
+        instance.setScore();
+        assertEquals(2, instance.getScore());
     }
     
  @Test
@@ -107,7 +110,8 @@ public class PlayerTest {
         System.out.println("Test showScore Good");
         Player instance = new Player("player1");
     
-        assertEquals(true, instance.getName().equals("player1") && instance.getScore() == 0);
+        assertEquals(true, instance.getName().equals("player1")
+                && instance.getScore() == 0);
     }
 
     
@@ -165,7 +169,7 @@ public class PlayerTest {
     
      @Test
     public void testGetStreakGood() {
-        System.out.println("Test get streak boundary");
+        System.out.println("Test get streak good");
         Player player1 = new Player("player1");
         assertEquals(0, player1.getStreak());
         
@@ -193,7 +197,7 @@ public class PlayerTest {
      */
     @Test
     public void testGetHand() {
-        System.out.println("TestAddToHand Good");
+        System.out.println("TestGetHand Good");
         Player instance = new Player("player1");
         PlayingCard card = new PlayingCard(3,"Heart");
         instance.addToHand(card);
