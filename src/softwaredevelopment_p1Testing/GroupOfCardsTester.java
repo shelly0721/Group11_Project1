@@ -37,9 +37,6 @@ public class GroupOfCardsTester {
         this.size = size;
     }
 
-     public boolean compareCards(CardTester card){
-       return true; //holding statement 
-    };
     /**
      * A method that will get the group of cards as an ArrayList
      *
