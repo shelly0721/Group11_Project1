@@ -58,6 +58,9 @@ public class PlayingCard extends Card implements Comparable{
     public ArrayList<PlayingCard> compareCards(ArrayList<PlayingCard> cardPile){
         ArrayList<PlayingCard> result = new ArrayList();
 //        cardPile.add(this);
+        if (cardPile.isEmpty()) {
+            return result;
+        }
         Collections.sort(cardPile);
         Collections.reverse(cardPile);
         PlayingCard first = cardPile.get(0);
